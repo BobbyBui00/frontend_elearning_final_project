@@ -43,8 +43,8 @@
                     <h5>Tax: {{ tax | currency: 'CAD' }}</h5>
                     <h5>Total: {{ priceTotal | currency: 'CAD' }}</h5>
                     <p class="divider"></p>
-                    <button class="course-img-info-button-1" (click)="addToCart()">Add to cart</button>
-                    <button class="course-img-info-button-2" routerLink="/payment">Buy now</button>
+                    <button class="course-img-info-button-1" (click)="addToCart(true)">Add to cart</button>
+                    <button class="course-img-info-button-2" (click)="addToCart(false)">Buy now</button>
                 </div>
             </div>
         </div>

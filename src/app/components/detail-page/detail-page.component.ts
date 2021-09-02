@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Course } from 'src/app/models/course';
 import { CourseItems } from 'src/app/models/course-items';
@@ -19,7 +19,7 @@ export class DetailPageComponent implements OnInit {
   tax: number = 0;
   priceTotal: number = 0;
 
-  constructor(private courseServive: CourseService, private route: ActivatedRoute, private courseCartService: CourseCartService) { }
+  constructor(private courseServive: CourseService, private route: ActivatedRoute, private courseCartService: CourseCartService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCourseDetail();
@@ -38,9 +38,15 @@ export class DetailPageComponent implements OnInit {
     )
   }
 
-  addToCart() {
+  addToCart(status: Boolean) {
     const theCourseItem = new CourseItems(this.courseDetail);
     this.courseCartService.addToCart(theCourseItem);
+
+    if (status) {
+      this.router.navigateByUrl('/cart-details');
+    } else {
+      this.router.navigateByUrl('/payment');
+    }
   }
 
   showText() {

@@ -17,7 +17,8 @@
     border: 1px solid rgba(20, 23, 28, 0.1);
     margin-bottom: 15px;
     margin-top: 15px;
-    width: 385px;
+    width: 345px;
+    cursor: pointer;
 }
 
 .categories .categories__content .row .categories__items:hover {

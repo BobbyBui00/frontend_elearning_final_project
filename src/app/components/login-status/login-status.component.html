@@ -1,7 +1,7 @@
 <div class="myNavBar__buttons">
     <div *ngIf="!isAuthenticated">
         <button class="button button--white" routerLink="/login">Log In</button>
-        <button class="button button--red" routerLink="/">Sign Up</button>
+        <button class="button button--red" routerLink="/login">Sign Up</button>
     </div>
     <div *ngIf="isAuthenticated">
         <a href="#" class="student__name">{{username}}</a>

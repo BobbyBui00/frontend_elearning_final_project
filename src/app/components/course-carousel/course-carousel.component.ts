@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
@@ -11,7 +12,7 @@ import { CourseService } from 'src/app/services/course.service';
 export class CourseCarouselComponent implements OnInit {
   courses: Course[] = [];
   coursesArray: Course[] = [];
-  constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService, private router: Router) { }
 
   ngOnInit(): void {
     this.handleCourseList();
@@ -28,6 +29,14 @@ export class CourseCarouselComponent implements OnInit {
       this.courses = data;
       console.log(this.courses)
     })
+  }
+
+  goToCourseDetail(courseName: String, courseInstructor: String) {
+    this.courseService.getCourseByNameAndInstructor(courseName, courseInstructor).subscribe(
+      data => {
+        this.router.navigateByUrl(`/course-detail/${data.id}`)
+      }
+    )
   }
 
   customOptions: OwlOptions = {

@@ -3,7 +3,7 @@
         <h2>Students are viewing</h2>
         <owl-carousel-o [options]="customOptions">
             <ng-template *ngFor="let tempCourse of courses" carouselSlide>
-                <div class="card">
+                <div class="card" (click)="goToCourseDetail(tempCourse.courseName, tempCourse.courseInstructor.username)">
                     <img src="../../../assets/img/kh9.jpg" class="card-img-top" alt="kh9">
                     <div class="card-body">
                         <h5 class="card-title">{{tempCourse.courseName}}
